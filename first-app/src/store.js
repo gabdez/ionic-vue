@@ -5,7 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    JsonTodo: [
+    todos: [
       {
         id: 1,
         name: "Make awesome applications"
@@ -24,10 +24,15 @@ export default new Vuex.Store({
       }
     ]
   },
+  getters: {
+    getTodoById: state => id => {
+      return state.todos.find(todo => todo.id == id);
+    }
+  },
   mutations: {
     addTodo(state) {
-      state.JsonTodo.push({
-        id: state.JsonTodo.length + 1,
+      state.todos.push({
+        id: state.todos.length + 1,
         name: "new todo"
       });
     }

@@ -9,12 +9,18 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
+      redirect: {
+        name: "todos"
+      }
+    },
+    {
+      path: "/todos",
+      name: "todos",
       component: Home
     },
     {
-      path: "/TodoView/:id",
-      name: "view",
+      path: "/todos/:id",
+      name: "todoView",
       component: TodoView
     },
     {

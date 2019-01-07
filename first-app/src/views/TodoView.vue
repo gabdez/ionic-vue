@@ -5,10 +5,10 @@
         <ion-button fill="outline" size="small" slot="start" @click="backTodos" class="backButton">
           <ion-icon name="arrow-back"></ion-icon>back
         </ion-button>
-        <ion-title>{{$route.params.id}}</ion-title>
+        <ion-title>{{todo.name}}</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ViewTodo/>
+    <ViewTodo :todo="todo"/>
   </div>
 </template>
 
@@ -31,12 +31,15 @@ export default {
   data: function() {
     return {};
   },
-  mounted() {
-    console.log("view -> TodoView");
-  },
+  mounted() {},
   methods: {
     backTodos: function() {
       this.$router.go(-1);
+    }
+  },
+  computed: {
+    todo: function() {
+      return this.$store.getters.getTodoById(this.$route.params.id);
     }
   }
 };

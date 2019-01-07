@@ -47,7 +47,7 @@ export default {
   methods: {
     viewTodo(todo) {
       console.log(todo.name);
-      this.$router.push("/TodoView/" + todo.id);
+      this.$router.push({ name: "todoView", params: { id: todo.id } });
     },
     addTodo() {
       this.$store.commit("addTodo");
@@ -56,7 +56,7 @@ export default {
   computed: {
     todos: function() {
       console.log();
-      return this.$store.state.JsonTodo;
+      return this.$store.state.todos;
     }
   }
 };
