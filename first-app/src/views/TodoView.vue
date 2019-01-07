@@ -2,7 +2,7 @@
   <div>
     <ion-header>
       <ion-toolbar class="toolbar-todo">
-        <ion-button fill="outline" slot="start" @click="backTodos" class="backButton">
+        <ion-button fill="outline" size="small" slot="start" @click="backTodos" class="backButton">
           <ion-icon name="arrow-back"></ion-icon>back
         </ion-button>
         <ion-title>{{$route.params.id}}</ion-title>

@@ -6,7 +6,7 @@
       </ion-toolbar>
     </ion-header>
     <ion-list lines="full">
-      <ion-item v-for="todo in JsonTodo" :key="todo.id" @click="viewTodo(todo)">
+      <ion-item v-for="todo in todos" :key="todo.id" @click="viewTodo(todo)">
         <ion-label color="primary">{{todo.name}}</ion-label>
         <ion-icon color="primary" name="arrow-forward"></ion-icon>
       </ion-item>
@@ -42,26 +42,7 @@ export default {
   name: "Todo",
   props: {},
   data: function() {
-    return {
-      JsonTodo: [
-        {
-          id: 1,
-          name: "Make awesome applications"
-        },
-        {
-          id: 2,
-          name: "Play squash"
-        },
-        {
-          id: 3,
-          name: "Deadlift"
-        },
-        {
-          id: 4,
-          name: "Squat"
-        }
-      ]
-    };
+    return {};
   },
   methods: {
     viewTodo(todo) {
@@ -69,7 +50,13 @@ export default {
       this.$router.push("/TodoView/" + todo.id);
     },
     addTodo() {
-      this.JsonTodo.push({ id: this.JsonTodo.length + 1, name: "new todo" });
+      this.$store.commit("addTodo");
+    }
+  },
+  computed: {
+    todos: function() {
+      console.log();
+      return this.$store.state.JsonTodo;
     }
   }
 };
